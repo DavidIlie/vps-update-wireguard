@@ -9,7 +9,7 @@ There are probably more efficient ways to do this, such as using a dynamic DNS b
 You need to configure **four envionment variables**:
 
 -  `SSH_IP` - The IP address of your SSH server.
--  `SSH_PRIVATE_KEY` - Your private key registered on the server. It needs to be encoded in [BASE64](https://www.base64encode.org/).
+-  `SSH_PRIVATE_KEY` - Your private key registered on the server. It needs to be encoded in [Base64](https://www.base64encode.org/).
 -  `SSH_WG_FILE` - The path for your WireGuard configration file. Normally `/etc/wireguard/wg0.conf`
 -  `WG_PORT` - The port of your WireGuard server. Normally `51820`.
 
