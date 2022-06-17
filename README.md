@@ -16,7 +16,7 @@ You need to configure **four envionment variables**:
 You can deploy this via Docker with the published docker image:
 
 ```bash
-docker pull https://ghcr.io/davidilie/vps-update-wireguard:latest
+docker pull ghcr.io/davidilie/vps-update-wireguard:latest
 ```
 
 You can then deploy this on any Docker-capable machine and it should all _hopefully_ work.
