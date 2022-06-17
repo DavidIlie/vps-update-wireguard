@@ -24,15 +24,15 @@ jobs:
               context: .
               push: true
               tags: ghcr.io/davidilie/vps-update-wireguard:latest
-   #  deploy_self:
-   #     name: "Deploy Self"
-   #     runs-on: ubuntu-latest
-   #     needs: [build_and_publish]
-   #     steps:
-   #        - name: "Set Kubernetes Context"
-   #          uses: Azure/k8s-set-context@v1
-   #          with:
-   #             method: kubeconfig
-   #             kubeconfig: ${{ secrets.KUBE_CONFIG }}
-   #        - name: "Restart deployment on DavidIlie's instance"
-   #          run: kubectl rollout restart deploy vps-update-wireguard -n internal
+    deploy_self:
+       name: "Deploy Self"
+       runs-on: ubuntu-latest
+       needs: [build_and_publish]
+       steps:
+          - name: "Set Kubernetes Context"
+            uses: Azure/k8s-set-context@v1
+            with:
+               method: kubeconfig
+               kubeconfig: ${{ secrets.KUBE_CONFIG }}
+          - name: "Restart deployment on DavidIlie's instance"
+            run: kubectl rollout restart deploy vps-update-wireguard -n internal
