@@ -12,6 +12,7 @@ You need to configure **four envionment variables**:
 -  `SSH_PRIVATE_KEY` - Your private key registered on the server. It needs to be encoded in [Base64](https://www.base64encode.org/).
 -  `SSH_WG_FILE` - The path for your WireGuard configration file. Normally `/etc/wireguard/wg0.conf`
 -  `WG_PORT` - The port of your WireGuard server. Normally `51820`.
+-  `WG_SERVICE_NAME` - The name of the systemd service for WireGuard. Normally `wg-quick@wg0`
 
 You can deploy this via Docker with the published docker image:
 

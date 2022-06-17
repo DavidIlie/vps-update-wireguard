@@ -94,6 +94,11 @@ export const updateIpAddress = async (ipAddress?: string, skipTest = false) => {
       fs.unlinkSync(path);
       console.log(chalk.gray.bold("Deleting backup file..."));
       await ssh.exec(`rm -rf /tmp/backupwireguard.conf`, []);
+      console.log(chalk.gray.bold("Restarting WireGuard service..."));
+      await ssh.exec(
+         `sudo systemctl restart ${process.env.WG_SERVICE_NAME}`,
+         []
+      );
       console.log(
          chalk.green.bold(
             `Successfully updated IP from ${finalIp} to ${ip}! ${chalk.gray.bold(

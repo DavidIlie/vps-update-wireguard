@@ -5,6 +5,7 @@ declare global {
          SSH_PRIVATE_KEY: string;
          SSH_WG_FILE: string;
          WG_PORT: string;
+         WG_SERVICE_NAME: string;
       }
    }
 }
