@@ -5,6 +5,10 @@ on:
       branches:
          - master
 
+permissions:
+   contents: read
+   packages: write
+
 jobs:
    build_and_publish:
       name: "Build and Publish"
@@ -17,12 +21,14 @@ jobs:
            with:
               registry: ghcr.io
               username: DavidIlie
-              password: ${{ secrets.GHCR_PASSWORD }}
+              password: ${{ secrets.GITHUB_TOKEN }}
          - name: build and push to container registry
            uses: docker/build-push-action@v3
            with:
               context: .
               push: true
+              cache-from: type=gha,scope=vps-update-wireguard
+              cache-to: type=gha,mode=max,scope=vps-update-wireguard
               tags: ghcr.io/davidilie/vps-update-wireguard:latest
    deploy_self:
       name: "Deploy Self"
