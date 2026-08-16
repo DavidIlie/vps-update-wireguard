@@ -8,7 +8,7 @@ on:
 jobs:
    build_and_publish:
       name: "Build and Publish"
-      runs-on: ubuntu-latest
+      runs-on: davidapps-linux-x64
       steps:
          - name: checkout
            uses: actions/checkout@v2
@@ -26,9 +26,11 @@ jobs:
               tags: ghcr.io/davidilie/vps-update-wireguard:latest
    deploy_self:
       name: "Deploy Self"
-      runs-on: ubuntu-latest
+      runs-on: davidapps-linux-x64
       needs: [build_and_publish]
       steps:
+         - name: "Set up kubectl"
+           uses: azure/setup-kubectl@v4
          - name: "Set Kubernetes Context"
            uses: Azure/k8s-set-context@v1
            with:
